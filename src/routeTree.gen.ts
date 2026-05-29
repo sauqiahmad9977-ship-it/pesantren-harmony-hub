@@ -12,7 +12,20 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedSantriRouteImport } from './routes/_authenticated/santri'
+import { Route as AuthenticatedPengaturanRouteImport } from './routes/_authenticated/pengaturan'
+import { Route as AuthenticatedLaporanRouteImport } from './routes/_authenticated/laporan'
+import { Route as AuthenticatedKonselingRouteImport } from './routes/_authenticated/konseling'
+import { Route as AuthenticatedKitabRouteImport } from './routes/_authenticated/kitab'
+import { Route as AuthenticatedKeuanganRouteImport } from './routes/_authenticated/keuangan'
+import { Route as AuthenticatedKesehatanRouteImport } from './routes/_authenticated/kesehatan'
+import { Route as AuthenticatedKepegawaianRouteImport } from './routes/_authenticated/kepegawaian'
+import { Route as AuthenticatedKelasRouteImport } from './routes/_authenticated/kelas'
+import { Route as AuthenticatedKamarRouteImport } from './routes/_authenticated/kamar'
+import { Route as AuthenticatedIzinPulangRouteImport } from './routes/_authenticated/izin-pulang'
+import { Route as AuthenticatedIzinKeluarRouteImport } from './routes/_authenticated/izin-keluar'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedAkademikRouteImport } from './routes/_authenticated/akademik'
 
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
@@ -28,40 +41,190 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedSantriRoute = AuthenticatedSantriRouteImport.update({
+  id: '/santri',
+  path: '/santri',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedPengaturanRoute = AuthenticatedPengaturanRouteImport.update({
+  id: '/pengaturan',
+  path: '/pengaturan',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedLaporanRoute = AuthenticatedLaporanRouteImport.update({
+  id: '/laporan',
+  path: '/laporan',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedKonselingRoute = AuthenticatedKonselingRouteImport.update({
+  id: '/konseling',
+  path: '/konseling',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedKitabRoute = AuthenticatedKitabRouteImport.update({
+  id: '/kitab',
+  path: '/kitab',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedKeuanganRoute = AuthenticatedKeuanganRouteImport.update({
+  id: '/keuangan',
+  path: '/keuangan',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedKesehatanRoute = AuthenticatedKesehatanRouteImport.update({
+  id: '/kesehatan',
+  path: '/kesehatan',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedKepegawaianRoute =
+  AuthenticatedKepegawaianRouteImport.update({
+    id: '/kepegawaian',
+    path: '/kepegawaian',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedKelasRoute = AuthenticatedKelasRouteImport.update({
+  id: '/kelas',
+  path: '/kelas',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedKamarRoute = AuthenticatedKamarRouteImport.update({
+  id: '/kamar',
+  path: '/kamar',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedIzinPulangRoute = AuthenticatedIzinPulangRouteImport.update({
+  id: '/izin-pulang',
+  path: '/izin-pulang',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedIzinKeluarRoute = AuthenticatedIzinKeluarRouteImport.update({
+  id: '/izin-keluar',
+  path: '/izin-keluar',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedAkademikRoute = AuthenticatedAkademikRouteImport.update({
+  id: '/akademik',
+  path: '/akademik',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/akademik': typeof AuthenticatedAkademikRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/izin-keluar': typeof AuthenticatedIzinKeluarRoute
+  '/izin-pulang': typeof AuthenticatedIzinPulangRoute
+  '/kamar': typeof AuthenticatedKamarRoute
+  '/kelas': typeof AuthenticatedKelasRoute
+  '/kepegawaian': typeof AuthenticatedKepegawaianRoute
+  '/kesehatan': typeof AuthenticatedKesehatanRoute
+  '/keuangan': typeof AuthenticatedKeuanganRoute
+  '/kitab': typeof AuthenticatedKitabRoute
+  '/konseling': typeof AuthenticatedKonselingRoute
+  '/laporan': typeof AuthenticatedLaporanRoute
+  '/pengaturan': typeof AuthenticatedPengaturanRoute
+  '/santri': typeof AuthenticatedSantriRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/akademik': typeof AuthenticatedAkademikRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/izin-keluar': typeof AuthenticatedIzinKeluarRoute
+  '/izin-pulang': typeof AuthenticatedIzinPulangRoute
+  '/kamar': typeof AuthenticatedKamarRoute
+  '/kelas': typeof AuthenticatedKelasRoute
+  '/kepegawaian': typeof AuthenticatedKepegawaianRoute
+  '/kesehatan': typeof AuthenticatedKesehatanRoute
+  '/keuangan': typeof AuthenticatedKeuanganRoute
+  '/kitab': typeof AuthenticatedKitabRoute
+  '/konseling': typeof AuthenticatedKonselingRoute
+  '/laporan': typeof AuthenticatedLaporanRoute
+  '/pengaturan': typeof AuthenticatedPengaturanRoute
+  '/santri': typeof AuthenticatedSantriRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/login': typeof LoginRoute
+  '/_authenticated/akademik': typeof AuthenticatedAkademikRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/izin-keluar': typeof AuthenticatedIzinKeluarRoute
+  '/_authenticated/izin-pulang': typeof AuthenticatedIzinPulangRoute
+  '/_authenticated/kamar': typeof AuthenticatedKamarRoute
+  '/_authenticated/kelas': typeof AuthenticatedKelasRoute
+  '/_authenticated/kepegawaian': typeof AuthenticatedKepegawaianRoute
+  '/_authenticated/kesehatan': typeof AuthenticatedKesehatanRoute
+  '/_authenticated/keuangan': typeof AuthenticatedKeuanganRoute
+  '/_authenticated/kitab': typeof AuthenticatedKitabRoute
+  '/_authenticated/konseling': typeof AuthenticatedKonselingRoute
+  '/_authenticated/laporan': typeof AuthenticatedLaporanRoute
+  '/_authenticated/pengaturan': typeof AuthenticatedPengaturanRoute
+  '/_authenticated/santri': typeof AuthenticatedSantriRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/dashboard'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/akademik'
+    | '/dashboard'
+    | '/izin-keluar'
+    | '/izin-pulang'
+    | '/kamar'
+    | '/kelas'
+    | '/kepegawaian'
+    | '/kesehatan'
+    | '/keuangan'
+    | '/kitab'
+    | '/konseling'
+    | '/laporan'
+    | '/pengaturan'
+    | '/santri'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/dashboard'
+  to:
+    | '/'
+    | '/login'
+    | '/akademik'
+    | '/dashboard'
+    | '/izin-keluar'
+    | '/izin-pulang'
+    | '/kamar'
+    | '/kelas'
+    | '/kepegawaian'
+    | '/kesehatan'
+    | '/keuangan'
+    | '/kitab'
+    | '/konseling'
+    | '/laporan'
+    | '/pengaturan'
+    | '/santri'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/login'
+    | '/_authenticated/akademik'
     | '/_authenticated/dashboard'
+    | '/_authenticated/izin-keluar'
+    | '/_authenticated/izin-pulang'
+    | '/_authenticated/kamar'
+    | '/_authenticated/kelas'
+    | '/_authenticated/kepegawaian'
+    | '/_authenticated/kesehatan'
+    | '/_authenticated/keuangan'
+    | '/_authenticated/kitab'
+    | '/_authenticated/konseling'
+    | '/_authenticated/laporan'
+    | '/_authenticated/pengaturan'
+    | '/_authenticated/santri'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -93,6 +256,90 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/santri': {
+      id: '/_authenticated/santri'
+      path: '/santri'
+      fullPath: '/santri'
+      preLoaderRoute: typeof AuthenticatedSantriRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/pengaturan': {
+      id: '/_authenticated/pengaturan'
+      path: '/pengaturan'
+      fullPath: '/pengaturan'
+      preLoaderRoute: typeof AuthenticatedPengaturanRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/laporan': {
+      id: '/_authenticated/laporan'
+      path: '/laporan'
+      fullPath: '/laporan'
+      preLoaderRoute: typeof AuthenticatedLaporanRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/konseling': {
+      id: '/_authenticated/konseling'
+      path: '/konseling'
+      fullPath: '/konseling'
+      preLoaderRoute: typeof AuthenticatedKonselingRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/kitab': {
+      id: '/_authenticated/kitab'
+      path: '/kitab'
+      fullPath: '/kitab'
+      preLoaderRoute: typeof AuthenticatedKitabRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/keuangan': {
+      id: '/_authenticated/keuangan'
+      path: '/keuangan'
+      fullPath: '/keuangan'
+      preLoaderRoute: typeof AuthenticatedKeuanganRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/kesehatan': {
+      id: '/_authenticated/kesehatan'
+      path: '/kesehatan'
+      fullPath: '/kesehatan'
+      preLoaderRoute: typeof AuthenticatedKesehatanRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/kepegawaian': {
+      id: '/_authenticated/kepegawaian'
+      path: '/kepegawaian'
+      fullPath: '/kepegawaian'
+      preLoaderRoute: typeof AuthenticatedKepegawaianRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/kelas': {
+      id: '/_authenticated/kelas'
+      path: '/kelas'
+      fullPath: '/kelas'
+      preLoaderRoute: typeof AuthenticatedKelasRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/kamar': {
+      id: '/_authenticated/kamar'
+      path: '/kamar'
+      fullPath: '/kamar'
+      preLoaderRoute: typeof AuthenticatedKamarRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/izin-pulang': {
+      id: '/_authenticated/izin-pulang'
+      path: '/izin-pulang'
+      fullPath: '/izin-pulang'
+      preLoaderRoute: typeof AuthenticatedIzinPulangRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/izin-keluar': {
+      id: '/_authenticated/izin-keluar'
+      path: '/izin-keluar'
+      fullPath: '/izin-keluar'
+      preLoaderRoute: typeof AuthenticatedIzinKeluarRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
       path: '/dashboard'
@@ -100,15 +347,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/akademik': {
+      id: '/_authenticated/akademik'
+      path: '/akademik'
+      fullPath: '/akademik'
+      preLoaderRoute: typeof AuthenticatedAkademikRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
   }
 }
 
 interface AuthenticatedRouteChildren {
+  AuthenticatedAkademikRoute: typeof AuthenticatedAkademikRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedIzinKeluarRoute: typeof AuthenticatedIzinKeluarRoute
+  AuthenticatedIzinPulangRoute: typeof AuthenticatedIzinPulangRoute
+  AuthenticatedKamarRoute: typeof AuthenticatedKamarRoute
+  AuthenticatedKelasRoute: typeof AuthenticatedKelasRoute
+  AuthenticatedKepegawaianRoute: typeof AuthenticatedKepegawaianRoute
+  AuthenticatedKesehatanRoute: typeof AuthenticatedKesehatanRoute
+  AuthenticatedKeuanganRoute: typeof AuthenticatedKeuanganRoute
+  AuthenticatedKitabRoute: typeof AuthenticatedKitabRoute
+  AuthenticatedKonselingRoute: typeof AuthenticatedKonselingRoute
+  AuthenticatedLaporanRoute: typeof AuthenticatedLaporanRoute
+  AuthenticatedPengaturanRoute: typeof AuthenticatedPengaturanRoute
+  AuthenticatedSantriRoute: typeof AuthenticatedSantriRoute
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedAkademikRoute: AuthenticatedAkademikRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedIzinKeluarRoute: AuthenticatedIzinKeluarRoute,
+  AuthenticatedIzinPulangRoute: AuthenticatedIzinPulangRoute,
+  AuthenticatedKamarRoute: AuthenticatedKamarRoute,
+  AuthenticatedKelasRoute: AuthenticatedKelasRoute,
+  AuthenticatedKepegawaianRoute: AuthenticatedKepegawaianRoute,
+  AuthenticatedKesehatanRoute: AuthenticatedKesehatanRoute,
+  AuthenticatedKeuanganRoute: AuthenticatedKeuanganRoute,
+  AuthenticatedKitabRoute: AuthenticatedKitabRoute,
+  AuthenticatedKonselingRoute: AuthenticatedKonselingRoute,
+  AuthenticatedLaporanRoute: AuthenticatedLaporanRoute,
+  AuthenticatedPengaturanRoute: AuthenticatedPengaturanRoute,
+  AuthenticatedSantriRoute: AuthenticatedSantriRoute,
 }
 
 const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
