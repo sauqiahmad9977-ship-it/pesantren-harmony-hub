@@ -14,16 +14,398 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      izin_keluar: {
+        Row: {
+          created_at: string
+          id: string
+          jam_keluar: string | null
+          jam_kembali: string | null
+          keperluan: string | null
+          santri_id: string
+          status: Database["public"]["Enums"]["izin_status"]
+          tanggal: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          jam_keluar?: string | null
+          jam_kembali?: string | null
+          keperluan?: string | null
+          santri_id: string
+          status?: Database["public"]["Enums"]["izin_status"]
+          tanggal?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          jam_keluar?: string | null
+          jam_kembali?: string | null
+          keperluan?: string | null
+          santri_id?: string
+          status?: Database["public"]["Enums"]["izin_status"]
+          tanggal?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "izin_keluar_santri_id_fkey"
+            columns: ["santri_id"]
+            isOneToOne: false
+            referencedRelation: "santri"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      izin_pulang: {
+        Row: {
+          created_at: string
+          id: string
+          keperluan: string | null
+          santri_id: string
+          status: Database["public"]["Enums"]["izin_status"]
+          tanggal_kembali: string | null
+          tanggal_pulang: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          keperluan?: string | null
+          santri_id: string
+          status?: Database["public"]["Enums"]["izin_status"]
+          tanggal_kembali?: string | null
+          tanggal_pulang?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          keperluan?: string | null
+          santri_id?: string
+          status?: Database["public"]["Enums"]["izin_status"]
+          tanggal_kembali?: string | null
+          tanggal_pulang?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "izin_pulang_santri_id_fkey"
+            columns: ["santri_id"]
+            isOneToOne: false
+            referencedRelation: "santri"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      kamar: {
+        Row: {
+          created_at: string
+          gedung: string | null
+          id: string
+          kapasitas: number
+          nomor: string
+          pengasuh: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          gedung?: string | null
+          id?: string
+          kapasitas?: number
+          nomor: string
+          pengasuh?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          gedung?: string | null
+          id?: string
+          kapasitas?: number
+          nomor?: string
+          pengasuh?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      kelas: {
+        Row: {
+          created_at: string
+          id: string
+          kapasitas: number
+          nama: string
+          tingkat: string | null
+          updated_at: string
+          wali_kelas: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          kapasitas?: number
+          nama: string
+          tingkat?: string | null
+          updated_at?: string
+          wali_kelas?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          kapasitas?: number
+          nama?: string
+          tingkat?: string | null
+          updated_at?: string
+          wali_kelas?: string | null
+        }
+        Relationships: []
+      }
+      kesehatan: {
+        Row: {
+          created_at: string
+          diagnosa: string | null
+          id: string
+          keluhan: string | null
+          santri_id: string
+          tanggal: string
+          tindakan: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          diagnosa?: string | null
+          id?: string
+          keluhan?: string | null
+          santri_id: string
+          tanggal?: string
+          tindakan?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          diagnosa?: string | null
+          id?: string
+          keluhan?: string | null
+          santri_id?: string
+          tanggal?: string
+          tindakan?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "kesehatan_santri_id_fkey"
+            columns: ["santri_id"]
+            isOneToOne: false
+            referencedRelation: "santri"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      kitab: {
+        Row: {
+          created_at: string
+          id: string
+          judul: string
+          kategori: string | null
+          pengarang: string | null
+          stok: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          judul: string
+          kategori?: string | null
+          pengarang?: string | null
+          stok?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          judul?: string
+          kategori?: string | null
+          pengarang?: string | null
+          stok?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      konseling: {
+        Row: {
+          created_at: string
+          id: string
+          konselor: string | null
+          masalah: string | null
+          santri_id: string
+          solusi: string | null
+          tanggal: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          konselor?: string | null
+          masalah?: string | null
+          santri_id: string
+          solusi?: string | null
+          tanggal?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          konselor?: string | null
+          masalah?: string | null
+          santri_id?: string
+          solusi?: string | null
+          tanggal?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "konseling_santri_id_fkey"
+            columns: ["santri_id"]
+            isOneToOne: false
+            referencedRelation: "santri"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          full_name: string
+          id: string
+          phone: string | null
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string
+          id: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string
+          id?: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      santri: {
+        Row: {
+          alamat: string | null
+          created_at: string
+          foto_url: string | null
+          gender: Database["public"]["Enums"]["gender_type"]
+          id: string
+          kamar_id: string | null
+          kelas_id: string | null
+          nama: string
+          nama_wali: string | null
+          nis: string
+          status: Database["public"]["Enums"]["santri_status"]
+          tanggal_lahir: string | null
+          tanggal_masuk: string
+          telepon_wali: string | null
+          updated_at: string
+        }
+        Insert: {
+          alamat?: string | null
+          created_at?: string
+          foto_url?: string | null
+          gender?: Database["public"]["Enums"]["gender_type"]
+          id?: string
+          kamar_id?: string | null
+          kelas_id?: string | null
+          nama: string
+          nama_wali?: string | null
+          nis: string
+          status?: Database["public"]["Enums"]["santri_status"]
+          tanggal_lahir?: string | null
+          tanggal_masuk?: string
+          telepon_wali?: string | null
+          updated_at?: string
+        }
+        Update: {
+          alamat?: string | null
+          created_at?: string
+          foto_url?: string | null
+          gender?: Database["public"]["Enums"]["gender_type"]
+          id?: string
+          kamar_id?: string | null
+          kelas_id?: string | null
+          nama?: string
+          nama_wali?: string | null
+          nis?: string
+          status?: Database["public"]["Enums"]["santri_status"]
+          tanggal_lahir?: string | null
+          tanggal_masuk?: string
+          telepon_wali?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "santri_kamar_id_fkey"
+            columns: ["kamar_id"]
+            isOneToOne: false
+            referencedRelation: "kamar"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "santri_kelas_id_fkey"
+            columns: ["kelas_id"]
+            isOneToOne: false
+            referencedRelation: "kelas"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "ustadz" | "staff"
+      gender_type: "L" | "P"
+      izin_status: "menunggu" | "disetujui" | "ditolak" | "kembali"
+      santri_status: "aktif" | "alumni" | "keluar" | "cuti"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +532,11 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "ustadz", "staff"],
+      gender_type: ["L", "P"],
+      izin_status: ["menunggu", "disetujui", "ditolak", "kembali"],
+      santri_status: ["aktif", "alumni", "keluar", "cuti"],
+    },
   },
 } as const
