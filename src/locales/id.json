@@ -1,0 +1,36 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "santri": "Santri",
+    "kelas": "Kelas",
+    "kamar": "Kamar",
+    "kitab": "Kitab",
+    "kesehatan": "Kesehatan",
+    "konseling": "Konseling",
+    "perizinan": "Perizinan",
+    "kepegawaian": "Kepegawaian",
+    "akademik": "Akademik",
+    "keuangan": "Keuangan",
+    "logout": "Keluar",
+    "language": "Bahasa"
+  },
+  "dashboard": {
+    "welcome": "Selamat datang",
+    "greeting": "Assalamu'alaikum",
+    "logged_in_as": "Anda masuk sebagai",
+    "summary_text": "Berikut ringkasan pondok.",
+    "total_santri": "Total Santri",
+    "kelas": "Kelas",
+    "kamar": "Kamar",
+    "kitab": "Kitab",
+    "pegawai": "Pegawai",
+    "rekam_kesehatan": "Rekam Kesehatan",
+    "sesi_konseling": "Sesi Konseling",
+    "izin_keluar": "Izin Keluar",
+    "izin_pulang": "Izin Pulang",
+    "desc_p1": "Aplikasi ini membantu pengelolaan pondok pesantren secara terpadu — mulai dari data santri, kamar, kelas, kitab, kesehatan, konseling, hingga perizinan.",
+    "desc_p2": "Gunakan menu di samping untuk berpindah modul. Semua modul sudah aktif dan terhubung ke database MySQL.",
+    "current_time": "Waktu Saat Ini",
+    "hijri_suffix": "H"
+  }
+}

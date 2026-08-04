@@ -1,0 +1,36 @@
+{
+  "sidebar": {
+    "dashboard": "Papan Pemuka",
+    "santri": "Pelajar",
+    "kelas": "Kelas",
+    "kamar": "Bilik",
+    "kitab": "Kitab",
+    "kesehatan": "Kesihatan",
+    "konseling": "Kaunseling",
+    "perizinan": "Kebenaran",
+    "kepegawaian": "Kakitangan",
+    "akademik": "Akademik",
+    "keuangan": "Kewangan",
+    "logout": "Log Keluar",
+    "language": "Bahasa"
+  },
+  "dashboard": {
+    "welcome": "Selamat datang",
+    "greeting": "Assalamu'alaikum",
+    "logged_in_as": "Anda log masuk sebagai",
+    "summary_text": "Berikut adalah ringkasan asrama.",
+    "total_santri": "Jumlah Pelajar",
+    "kelas": "Kelas",
+    "kamar": "Bilik",
+    "kitab": "Kitab",
+    "pegawai": "Kakitangan",
+    "rekam_kesehatan": "Rekod Kesihatan",
+    "sesi_konseling": "Sesi Kaunseling",
+    "izin_keluar": "Kebenaran Keluar",
+    "izin_pulang": "Kebenaran Pulang",
+    "desc_p1": "Aplikasi ini membantu pengurusan asrama secara bersepadu — dari data pelajar, bilik, kelas, kitab, kesihatan, kaunseling, hingga kebenaran.",
+    "desc_p2": "Gunakan menu di sebelah untuk menavigasi modul. Semua modul aktif dan disambungkan ke pangkalan data MySQL.",
+    "current_time": "Masa Kini",
+    "hijri_suffix": "H"
+  }
+}

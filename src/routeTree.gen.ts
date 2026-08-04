@@ -24,7 +24,10 @@ import { Route as AuthenticatedKelasRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedKamarRouteImport } from './routes/_authenticated/kamar'
 import { Route as AuthenticatedIzinPulangRouteImport } from './routes/_authenticated/izin-pulang'
 import { Route as AuthenticatedIzinKeluarRouteImport } from './routes/_authenticated/izin-keluar'
+import { Route as AuthenticatedDonaturRouteImport } from './routes/_authenticated/donatur'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedBukuKasRouteImport } from './routes/_authenticated/buku-kas'
+import { Route as AuthenticatedAkuntansiRouteImport } from './routes/_authenticated/akuntansi'
 import { Route as AuthenticatedAkademikRouteImport } from './routes/_authenticated/akademik'
 
 const LoginRoute = LoginRouteImport.update({
@@ -102,9 +105,24 @@ const AuthenticatedIzinKeluarRoute = AuthenticatedIzinKeluarRouteImport.update({
   path: '/izin-keluar',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedDonaturRoute = AuthenticatedDonaturRouteImport.update({
+  id: '/donatur',
+  path: '/donatur',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedBukuKasRoute = AuthenticatedBukuKasRouteImport.update({
+  id: '/buku-kas',
+  path: '/buku-kas',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedAkuntansiRoute = AuthenticatedAkuntansiRouteImport.update({
+  id: '/akuntansi',
+  path: '/akuntansi',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
 const AuthenticatedAkademikRoute = AuthenticatedAkademikRouteImport.update({
@@ -117,7 +135,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/akademik': typeof AuthenticatedAkademikRoute
+  '/akuntansi': typeof AuthenticatedAkuntansiRoute
+  '/buku-kas': typeof AuthenticatedBukuKasRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/donatur': typeof AuthenticatedDonaturRoute
   '/izin-keluar': typeof AuthenticatedIzinKeluarRoute
   '/izin-pulang': typeof AuthenticatedIzinPulangRoute
   '/kamar': typeof AuthenticatedKamarRoute
@@ -135,7 +156,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/akademik': typeof AuthenticatedAkademikRoute
+  '/akuntansi': typeof AuthenticatedAkuntansiRoute
+  '/buku-kas': typeof AuthenticatedBukuKasRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/donatur': typeof AuthenticatedDonaturRoute
   '/izin-keluar': typeof AuthenticatedIzinKeluarRoute
   '/izin-pulang': typeof AuthenticatedIzinPulangRoute
   '/kamar': typeof AuthenticatedKamarRoute
@@ -155,7 +179,10 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/login': typeof LoginRoute
   '/_authenticated/akademik': typeof AuthenticatedAkademikRoute
+  '/_authenticated/akuntansi': typeof AuthenticatedAkuntansiRoute
+  '/_authenticated/buku-kas': typeof AuthenticatedBukuKasRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/donatur': typeof AuthenticatedDonaturRoute
   '/_authenticated/izin-keluar': typeof AuthenticatedIzinKeluarRoute
   '/_authenticated/izin-pulang': typeof AuthenticatedIzinPulangRoute
   '/_authenticated/kamar': typeof AuthenticatedKamarRoute
@@ -175,7 +202,10 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/akademik'
+    | '/akuntansi'
+    | '/buku-kas'
     | '/dashboard'
+    | '/donatur'
     | '/izin-keluar'
     | '/izin-pulang'
     | '/kamar'
@@ -193,7 +223,10 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/akademik'
+    | '/akuntansi'
+    | '/buku-kas'
     | '/dashboard'
+    | '/donatur'
     | '/izin-keluar'
     | '/izin-pulang'
     | '/kamar'
@@ -212,7 +245,10 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/login'
     | '/_authenticated/akademik'
+    | '/_authenticated/akuntansi'
+    | '/_authenticated/buku-kas'
     | '/_authenticated/dashboard'
+    | '/_authenticated/donatur'
     | '/_authenticated/izin-keluar'
     | '/_authenticated/izin-pulang'
     | '/_authenticated/kamar'
@@ -340,11 +376,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedIzinKeluarRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/donatur': {
+      id: '/_authenticated/donatur'
+      path: '/donatur'
+      fullPath: '/donatur'
+      preLoaderRoute: typeof AuthenticatedDonaturRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/buku-kas': {
+      id: '/_authenticated/buku-kas'
+      path: '/buku-kas'
+      fullPath: '/buku-kas'
+      preLoaderRoute: typeof AuthenticatedBukuKasRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/akuntansi': {
+      id: '/_authenticated/akuntansi'
+      path: '/akuntansi'
+      fullPath: '/akuntansi'
+      preLoaderRoute: typeof AuthenticatedAkuntansiRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/akademik': {
@@ -359,7 +416,10 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteChildren {
   AuthenticatedAkademikRoute: typeof AuthenticatedAkademikRoute
+  AuthenticatedAkuntansiRoute: typeof AuthenticatedAkuntansiRoute
+  AuthenticatedBukuKasRoute: typeof AuthenticatedBukuKasRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedDonaturRoute: typeof AuthenticatedDonaturRoute
   AuthenticatedIzinKeluarRoute: typeof AuthenticatedIzinKeluarRoute
   AuthenticatedIzinPulangRoute: typeof AuthenticatedIzinPulangRoute
   AuthenticatedKamarRoute: typeof AuthenticatedKamarRoute
@@ -376,7 +436,10 @@ interface AuthenticatedRouteChildren {
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedAkademikRoute: AuthenticatedAkademikRoute,
+  AuthenticatedAkuntansiRoute: AuthenticatedAkuntansiRoute,
+  AuthenticatedBukuKasRoute: AuthenticatedBukuKasRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedDonaturRoute: AuthenticatedDonaturRoute,
   AuthenticatedIzinKeluarRoute: AuthenticatedIzinKeluarRoute,
   AuthenticatedIzinPulangRoute: AuthenticatedIzinPulangRoute,
   AuthenticatedKamarRoute: AuthenticatedKamarRoute,

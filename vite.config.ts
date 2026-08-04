@@ -12,4 +12,13 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  optimizeDeps: {
+    include: [
+      "lucide-react", 
+      "@tanstack/react-query", 
+      "@tanstack/react-router",
+      "date-fns",
+      "recharts"
+    ]
+  }
 });

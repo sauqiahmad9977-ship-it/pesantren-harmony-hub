@@ -1,0 +1,36 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "santri": "Students",
+    "kelas": "Classes",
+    "kamar": "Rooms",
+    "kitab": "Books",
+    "kesehatan": "Health",
+    "konseling": "Counseling",
+    "perizinan": "Permits",
+    "kepegawaian": "Staffing",
+    "akademik": "Academic",
+    "keuangan": "Finance",
+    "logout": "Logout",
+    "language": "Language"
+  },
+  "dashboard": {
+    "welcome": "Welcome",
+    "greeting": "Assalamu'alaikum",
+    "logged_in_as": "You are logged in as",
+    "summary_text": "Here is the summary.",
+    "total_santri": "Total Students",
+    "kelas": "Classes",
+    "kamar": "Rooms",
+    "kitab": "Books",
+    "pegawai": "Staff",
+    "rekam_kesehatan": "Health Records",
+    "sesi_konseling": "Counseling Sessions",
+    "izin_keluar": "Exit Permits",
+    "izin_pulang": "Home Permits",
+    "desc_p1": "This application helps manage the Islamic boarding school in an integrated way — from student data, rooms, classes, books, health, counseling, to permits.",
+    "desc_p2": "Use the side menu to navigate modules. All modules are active and connected to the MySQL database.",
+    "current_time": "Current Time",
+    "hijri_suffix": "H"
+  }
+}

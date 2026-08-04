@@ -1,0 +1,3 @@
+ALTER TABLE public.santri
+ADD COLUMN IF NOT EXISTS nama_ayah TEXT,
+ADD COLUMN IF NOT EXISTS nama_ibu TEXT;

@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
+import { useSettings } from "@/hooks/use-settings";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,7 +17,8 @@ export const Route = createFileRoute("/login")({
 
 function LoginPage() {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, signIn, signUp } = useAuth();
+  const { data: settings } = useSettings();
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,38 +28,46 @@ function LoginPage() {
     if (user) navigate({ to: "/dashboard", replace: true });
   }, [user, navigate]);
 
-  const signIn = async (e: React.FormEvent) => {
+  const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    setLoading(false);
-    if (error) toast.error(error.message);
-    else { toast.success("Berhasil masuk"); navigate({ to: "/dashboard", replace: true }); }
+    try {
+      await signIn(email, password);
+      toast.success("Berhasil masuk");
+      navigate({ to: "/dashboard", replace: true });
+    } catch (err: any) {
+      toast.error(err.message || "Login gagal");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const signUp = async (e: React.FormEvent) => {
+  const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const { error } = await supabase.auth.signUp({
-      email, password,
-      options: {
-        emailRedirectTo: `${window.location.origin}/dashboard`,
-        data: { full_name: fullName },
-      },
-    });
-    setLoading(false);
-    if (error) toast.error(error.message);
-    else toast.success("Pendaftaran berhasil. Periksa email Anda untuk verifikasi.");
+    try {
+      const message = await signUp(email, password, fullName);
+      toast.success(message);
+      navigate({ to: "/dashboard", replace: true });
+    } catch (err: any) {
+      toast.error(err.message || "Pendaftaran gagal");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4" style={{ background: "var(--gradient-forest)" }}>
       <div className="w-full max-w-md">
         <div className="text-center mb-6 text-primary-foreground">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary-foreground/10 backdrop-blur mb-4">
-            <GraduationCap className="w-8 h-8" />
-          </div>
-          <h1 className="text-3xl font-bold font-display">SIM Pondok Pesantren</h1>
+          {settings?.logo_url ? (
+            <img src={settings.logo_url} alt="Logo" className="w-16 h-16 rounded-2xl mx-auto mb-4 object-cover bg-white/20 p-1" />
+          ) : (
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary-foreground/10 backdrop-blur mb-4">
+              <GraduationCap className="w-8 h-8" />
+            </div>
+          )}
+          <h1 className="text-3xl font-bold font-display">{settings?.app_name || "SIM Pondok Pesantren"}</h1>
           <p className="text-sm opacity-80 mt-1">Sistem informasi manajemen terpadu</p>
         </div>
         <Card className="shadow-2xl border-0">
@@ -73,7 +82,7 @@ function LoginPage() {
                 <TabsTrigger value="signup">Daftar</TabsTrigger>
               </TabsList>
               <TabsContent value="signin">
-                <form onSubmit={signIn} className="space-y-4">
+                <form onSubmit={handleSignIn} className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
                     <Input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="nama@pesantren.id" />
@@ -89,7 +98,7 @@ function LoginPage() {
                 </form>
               </TabsContent>
               <TabsContent value="signup">
-                <form onSubmit={signUp} className="space-y-4">
+                <form onSubmit={handleSignUp} className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="fullName">Nama Lengkap</Label>
                     <Input id="fullName" required value={fullName} onChange={(e) => setFullName(e.target.value)} />

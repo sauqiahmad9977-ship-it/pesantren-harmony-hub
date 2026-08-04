@@ -1,4 +1,4 @@
-import { createFileRoute, Outlet, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Outlet, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useAuth } from "@/hooks/use-auth";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { LogOut, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { menu } from "@/lib/menu";
 
 export const Route = createFileRoute("/_authenticated")({
   component: AuthenticatedLayout,
@@ -15,10 +16,30 @@ export const Route = createFileRoute("/_authenticated")({
 function AuthenticatedLayout() {
   const { user, loading, signOut, roles } = useAuth();
   const navigate = useNavigate();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
-    if (!loading && !user) navigate({ to: "/login", replace: true });
-  }, [user, loading, navigate]);
+    if (!loading && !user) {
+      navigate({ to: "/login", replace: true });
+    } else if (!loading && user) {
+      let currentMenuItem = null;
+      for (const group of menu) {
+        const item = group.items.find(i => pathname.startsWith(i.url));
+        if (item) {
+          currentMenuItem = item;
+          break;
+        }
+      }
+
+      if (currentMenuItem && currentMenuItem.allowedRoles) {
+        const hasAccess = currentMenuItem.allowedRoles.some(r => roles.includes(r as any));
+        if (!hasAccess) {
+          toast.error("Anda tidak memiliki akses ke halaman ini");
+          navigate({ to: "/dashboard", replace: true });
+        }
+      }
+    }
+  }, [user, loading, navigate, pathname, roles]);
 
   if (loading || !user) {
     return (
@@ -28,7 +49,7 @@ function AuthenticatedLayout() {
     );
   }
 
-  const initials = (user.user_metadata?.full_name || user.email || "U")
+  const initials = (user.full_name || user.email || "U")
     .split(" ").map((w: string) => w[0]).join("").slice(0, 2).toUpperCase();
 
   return (
@@ -45,7 +66,7 @@ function AuthenticatedLayout() {
             </div>
             <div className="flex items-center gap-3">
               <div className="text-right hidden sm:block">
-                <p className="text-xs font-medium leading-tight">{user.user_metadata?.full_name || user.email}</p>
+                <p className="text-xs font-medium leading-tight">{user.full_name || user.email}</p>
                 <p className="text-[10px] text-muted-foreground capitalize">{roles[0] ?? "staff"}</p>
               </div>
               <Avatar className="w-8 h-8">
